@@ -32,3 +32,14 @@ Para ver o resultado, siga os passos do relatório anterior:
 1.  **Inicie seu banco de dados PostgreSQL.**
 2.  **Execute a aplicação** com o comando `.\mvnw.cmd spring-boot:run`.
 3.  **Acesse** [http://localhost:8080](http://localhost:8080) no seu navegador.
+
+
+
+
+
+
+
+
+
+
+
