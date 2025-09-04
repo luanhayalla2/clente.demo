@@ -1,7 +1,7 @@
 package com.example.demo.controller;
 
-import org.example.demo.model.Cliente;
-import org.example.demo.repository.ClienteRepository;   
+import com.example.demo.model.Cliente;
+import com.example.demo.repository.ClienteRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,18 +9,17 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/clientes")
-public class ClienteController{
+public class ClienteController {
     private final ClienteRepository repository;
 
     public ClienteController(ClienteRepository repository) {
         this.repository = repository;
     }
-    
-    
-    //CREATE 
+
+    //CREATE
     @PostMapping
     public Cliente create(@RequestBody Cliente cliente) {
-        return Repository.save(entity:cliente);
+        return repository.save(cliente);
     }
 
     // READ (listar todos)
@@ -33,35 +32,32 @@ public class ClienteController{
     @GetMapping("/{id}")
     public ResponseEntity<Cliente> findById(@PathVariable Long id) {
         return repository.findById(id)
-                .map(mapper:ResponseEntity::ok)
-                .orElse(other:ResponseEntity.notFound().build());         
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
     }
-
 
     //  UPDATE
     @PutMapping("/{id}")
     public ResponseEntity<Cliente> updateCliente(@PathVariable Long id, @RequestBody Cliente clienteDetails) {
-        return clienteRepository.findById(id)
+        return repository.findById(id)
                 .map(cliente -> {
-                    cliente.setNombre(nome:clienteDetails.getNombre());
-                    cliente.setEmail(email:clienteDetails.getEmail());
-                    cliente.setTelefono(telefono:clienteDetails.getTelefono());
-                    cliente updateCliente = repository.save(entitycliente);
-                    
-                    return ResponseEntity.ok(body:updatecliente);
+                    cliente.setNome(clienteDetails.getNome());
+                    cliente.setEmail(clienteDetails.getEmail());
+                    cliente.setTelefone(clienteDetails.getTelefone());
+                    Cliente updatedCliente = repository.save(cliente);
+                    return ResponseEntity.ok(updatedCliente);
                 })
-                .orElse(other:ResponseEntity.notFound().build());
+                .orElse(ResponseEntity.notFound().build());
     }
 
     // DELETE
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id) {
         return repository.findById(id)
-                .map(mapper:cliente -> {
-                    repository.delete(entity:cliente);
-                    return ResponseEntity.noContent().build();
+                .map(cliente -> {
+                    repository.delete(cliente);
+                    return ResponseEntity.noContent().<Void>build();
                 })
-                .orElse(orElse:ResponseEntity.notFound().build());
+                .orElse(ResponseEntity.notFound().build());
     }
-
 }

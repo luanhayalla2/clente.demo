@@ -1,0 +1,5 @@
+com\example\demo\DemoApplication.class
+com\example\demo\controller\HomeController.class
+com\example\demo\repository\ClienteRepository.class
+com\example\demo\model\Cliente.class
+com\example\demo\controller\ClienteController.class

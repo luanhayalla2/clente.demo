@@ -3,12 +3,12 @@ package com.example.demo.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
-@Controller no usages
+@Controller
 public class HomeController {
 
-
-    @GetMapping("/") no usages
-    public String home() { return "index.html";}
-
+    @GetMapping("/")
+    public String home() {
+        return "redirect:/index.html";
+    }
 
 }

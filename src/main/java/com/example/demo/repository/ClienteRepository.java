@@ -1,12 +1,10 @@
 package com.example.demo.repository;
 
-import com.example.demo.model.cliente;
+import com.example.demo.model.Cliente;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
 
-public interface clienteRepository extends JpaRepository<cliente, Long> {
+public interface ClienteRepository extends JpaRepository<Cliente, Long> {
 
 }
-
-

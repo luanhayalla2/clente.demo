@@ -1,18 +1,18 @@
 package com.example.demo.model;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "clientes")
-public class Clientes {
+public class Cliente {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String nome;     
+    private String nome;
 
-    @Column(unique = "true")
+    @Column(unique = true)
     private String email;
 
     private String telefone;
@@ -30,8 +30,3 @@ public class Clientes {
     public String getTelefone() {return telefone;}
     public void setTelefone(String telefone) {this.telefone = telefone;}
 }
-
-
-
-
-    
